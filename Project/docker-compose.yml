@@ -1,0 +1,48 @@
+# Запуск:
+#   1) Навчання (одноразово):  docker compose --profile train run --rm trainer
+#   2) Сервіс і UI:            docker compose up --build
+# API:  http://localhost:5000   UI: http://localhost:8501
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    image: house-price-api:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - MODELS_DIR=/app/models
+      - WEB_CONCURRENCY=2
+    volumes:
+      - ./models:/app/models:ro   # модель лише для читання
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ui
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:5000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+
+  trainer:
+    profiles: ["train"]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    image: house-price-api:latest
+    user: "${UID:-1000}:${GID:-1000}"
+    command: ["python", "-m", "src.train", "--data", "/app/data/raw/Housing.csv"]
+    environment:
+      - MODELS_DIR=/app/models
+      - REPORTS_DIR=/app/reports
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models
+      - ./reports:/app/reports

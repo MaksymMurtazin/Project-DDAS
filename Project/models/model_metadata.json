@@ -1,0 +1,275 @@
+{
+  "model_version": "20261012-165714",
+  "model_name": "ensemble",
+  "trained_at": "2026-10-12T16:57:14.387906+00:00",
+  "target": "price",
+  "n_rows": {
+    "train": 436,
+    "test": 109
+  },
+  "schema": {
+    "feature_order": [
+      "area",
+      "bedrooms",
+      "bathrooms",
+      "stories",
+      "mainroad",
+      "guestroom",
+      "basement",
+      "hotwaterheating",
+      "airconditioning",
+      "parking",
+      "prefarea",
+      "furnishingstatus"
+    ],
+    "numeric": {
+      "area": {
+        "min": 1650.0,
+        "max": 16200.0,
+        "median": 4500.0,
+        "is_integer": true
+      },
+      "bedrooms": {
+        "min": 1.0,
+        "max": 6.0,
+        "median": 3.0,
+        "is_integer": true
+      },
+      "bathrooms": {
+        "min": 1.0,
+        "max": 4.0,
+        "median": 1.0,
+        "is_integer": true
+      },
+      "stories": {
+        "min": 1.0,
+        "max": 4.0,
+        "median": 2.0,
+        "is_integer": true
+      },
+      "parking": {
+        "min": 0.0,
+        "max": 3.0,
+        "median": 0.0,
+        "is_integer": true
+      }
+    },
+    "categorical": {
+      "mainroad": [
+        "no",
+        "yes"
+      ],
+      "guestroom": [
+        "no",
+        "yes"
+      ],
+      "basement": [
+        "no",
+        "yes"
+      ],
+      "hotwaterheating": [
+        "no",
+        "yes"
+      ],
+      "airconditioning": [
+        "no",
+        "yes"
+      ],
+      "prefarea": [
+        "no",
+        "yes"
+      ],
+      "furnishingstatus": [
+        "furnished",
+        "semi-furnished",
+        "unfurnished"
+      ]
+    }
+  },
+  "prediction_interval": {
+    "level": 0.9,
+    "lower_ratio": 0.7378116531736487,
+    "upper_ratio": 1.4108656642757849,
+    "empirical_test_coverage": 0.7798165137614679
+  },
+  "metrics": {
+    "test": {
+      "rmse": 1376461.995162658,
+      "mae": 974943.8069724203,
+      "mape": 0.19979676175532124,
+      "median_ape": 0.15302671700080228,
+      "r2": 0.6251614812373659,
+      "within_5pct": 0.21100917431192662,
+      "within_7pct": 0.26605504587155965
+    },
+    "cv": {
+      "rmse": 1034982.0088121973,
+      "rmse_std": 60604.34306429424,
+      "mae": 720966.3963293679,
+      "mape": 0.15690087158394234,
+      "r2": 0.6439181964705288
+    }
+  },
+  "model_comparison": {
+    "baseline_median": {
+      "cv": {
+        "rmse": 1802012.4395855486,
+        "rmse_std": 142804.3571051203,
+        "mae": 1317874.3487460813,
+        "mape": 0.2827181526289771,
+        "r2": -0.07568501908709205
+      },
+      "test": {
+        "rmse": 2359666.8863865105,
+        "mae": 1763905.974533037,
+        "mape": 0.3671335252240633,
+        "median_ape": 0.33369919853332924,
+        "r2": -0.10158283361855824,
+        "within_5pct": 0.07339449541284404,
+        "within_7pct": 0.11009174311926606
+      }
+    },
+    "random_forest": {
+      "cv": {
+        "rmse": 1064812.6796848362,
+        "rmse_std": 53771.03445823794,
+        "mae": 742800.5840165265,
+        "mape": 0.1606067538453458,
+        "r2": 0.6200255121242012
+      },
+      "test": {
+        "rmse": 1373674.5259608566,
+        "mae": 975921.7640027024,
+        "mape": 0.1990707769132003,
+        "median_ape": 0.1622002064924041,
+        "r2": 0.6266781128162626,
+        "within_5pct": 0.2018348623853211,
+        "within_7pct": 0.24770642201834864
+      }
+    },
+    "xgboost": {
+      "cv": {
+        "rmse": 1028983.9249018661,
+        "rmse_std": 56469.18528132272,
+        "mae": 724262.0528768286,
+        "mape": 0.15707335383627044,
+        "r2": 0.6479255193770236
+      },
+      "test": {
+        "rmse": 1373365.827758441,
+        "mae": 974951.7866972478,
+        "mape": 0.20020113087307873,
+        "median_ape": 0.1763869523809524,
+        "r2": 0.6268458830475235,
+        "within_5pct": 0.1926605504587156,
+        "within_7pct": 0.23853211009174313
+      }
+    },
+    "lightgbm": {
+      "cv": {
+        "rmse": 1056270.1555844445,
+        "rmse_std": 67199.79088325011,
+        "mae": 734257.1201047606,
+        "mape": 0.15988121799069602,
+        "r2": 0.6293721404320822
+      },
+      "test": {
+        "rmse": 1402819.0530182926,
+        "mae": 982798.0013846788,
+        "mape": 0.20107634302859118,
+        "median_ape": 0.1475221857579641,
+        "r2": 0.6106689194935201,
+        "within_5pct": 0.22018348623853212,
+        "within_7pct": 0.28440366972477066
+      }
+    },
+    "ensemble": {
+      "cv": {
+        "rmse": 1034982.0088121973,
+        "rmse_std": 60604.34306429424,
+        "mae": 720966.3963293679,
+        "mape": 0.15690087158394234,
+        "r2": 0.6439181964705288
+      },
+      "test": {
+        "rmse": 1376461.995162658,
+        "mae": 974943.8069724203,
+        "mape": 0.19979676175532124,
+        "median_ape": 0.15302671700080228,
+        "r2": 0.6251614812373659,
+        "within_5pct": 0.21100917431192662,
+        "within_7pct": 0.26605504587155965
+      }
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "area",
+      "importance": 281993.79623546347,
+      "std": 31036.97104874956
+    },
+    {
+      "feature": "bathrooms",
+      "importance": 91168.6308090534,
+      "std": 60379.12474981001
+    },
+    {
+      "feature": "stories",
+      "importance": 84269.54077370225,
+      "std": 20037.40041080265
+    },
+    {
+      "feature": "parking",
+      "importance": 76006.03963142089,
+      "std": 21484.76440379194
+    },
+    {
+      "feature": "airconditioning",
+      "importance": 64969.801980345415,
+      "std": 18315.442233462916
+    },
+    {
+      "feature": "bedrooms",
+      "importance": 59173.05439623226,
+      "std": 34549.26951093212
+    },
+    {
+      "feature": "furnishingstatus",
+      "importance": 48737.33855974494,
+      "std": 17545.630859597735
+    },
+    {
+      "feature": "prefarea",
+      "importance": 43894.628135773484,
+      "std": 12618.962949165461
+    },
+    {
+      "feature": "mainroad",
+      "importance": 19429.759148095898,
+      "std": 11331.636432810012
+    },
+    {
+      "feature": "hotwaterheating",
+      "importance": 19052.243019160233,
+      "std": 9127.51899941621
+    },
+    {
+      "feature": "guestroom",
+      "importance": 10828.600453157642,
+      "std": 11820.921358246593
+    },
+    {
+      "feature": "basement",
+      "importance": 6551.870015971584,
+      "std": 19828.68458249214
+    }
+  ],
+  "environment": {
+    "python": "3.12.8",
+    "scikit_learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "pandas": "2.3.3",
+    "numpy": "2.5.4"
+  }
+}
